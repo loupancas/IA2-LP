@@ -13,7 +13,6 @@ public class SaveHighscore : MonoBehaviour
         highscoreT.text = PlayerPrefs.GetFloat("Highscore", 0).ToString();
 
     }
-    //https://forum.unity.com/threads/saving-time-with-playerprefs.676267/
     void ShowHighscore()
     {
         float highscore = PlayerPrefs.GetFloat("HighScore");
