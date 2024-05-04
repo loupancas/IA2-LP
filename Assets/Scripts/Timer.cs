@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public static float time;
-    public static Text timer_T;
-
+    private float time = 0f;
+    public TextMeshProUGUI timer_TMP;
     void Start()
     {
-        timer_T = GetComponent<Text>();
+        timer_TMP = GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
         string seconds = (time % 60).ToString("00");
         string minutes = Mathf.Floor((time % 3600) / 60).ToString("00");
 
-        timer_T.text = "Time:" + " " + minutes + ":" + seconds;
+        timer_TMP.text = "Time:" + " " + minutes + ":" + seconds;
+       
     }
 }
