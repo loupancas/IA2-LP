@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PowerUpManager : MonoBehaviour
+public class PowerUpAnnounce : MonoBehaviour
 {
     //public Transform powerUpParent;
     //public List<PowerUp> powerUps = new List<PowerUp>();

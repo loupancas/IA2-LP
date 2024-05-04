@@ -1,41 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _timerText;
-    private void Awake()
+    public float candies;
+    public TextMeshProUGUI candyText;
+    private static GameManager instance;
+
+    void Awake()
     {
-        if (Instance != null)
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
-
-    
-    public static float DeltaTime => Time.deltaTime;
-    private float Timer { get; set; }
-
-    public static GameManager Instance { get; private set; }
-
-   
-    public void Update()
+    public void AddCandy(int ammount)
     {
-        if (GameManager.Instance!=null) Timer += Timer*DeltaTime; 
-
-        _timerText.text = $"Time: {Timer}";
+        candies += ammount;
+        candyText.text = ": " + candies;
     }
 
+    public void MenuBackButton() 
+    {
+        Destroy(PlayerController.Get().gameObject);
+        SceneManager.LoadScene("ChoosePlayer");
+    }
 
-
+    public static GameManager Get()
+    {
+        return instance;
+    }
 }
-
-

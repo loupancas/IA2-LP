@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     private float knockBackTimer;
     public bool platform;
 
-    [SerializeField] private int coinCount;
-    [SerializeField] private int enemyCount;
+    [SerializeField] private int candyCount;
+    //[SerializeField] private int enemyCount;
     //private GameOriginator originator;
     //private GameCareTaker careTaker;
     private Vector3 startPosition;
@@ -153,8 +153,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetEnemyCount()
     {
-        enemyCount++;
-        SetEnemies();
+        //enemyCount++;
+        //SetEnemies();
         //EnemyScoreSystem.Get().UpdateEnemyScore(enemyCount);
     }
 
@@ -188,8 +188,8 @@ public class PlayerController : MonoBehaviour
             transform.position = startPosition;
             controller.enabled = true;
 
-            coinCount = 0;
-            enemyCount = 0;
+            candyCount = 0;
+            //enemyCount = 0;
 
             //EnemyScoreSystem.Get().UpdateEnemyScore(enemyCount);
             //CoinManager.instance.CoinCollected(coinCount);
