@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpPower : Pickup
 {
-    public float Modifier;
+    public float Modifier=1.8f;
     public override void Activate()
     {
         PowerUpAbilities.Get().jumpPowerUp(Modifier);

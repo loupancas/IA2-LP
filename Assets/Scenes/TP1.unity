@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Closest pickUp:'
+  m_text: 'Candies:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: 0}
+  m_AnchoredPosition: {x: 110, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370824924
@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 381412952}
   - component: {fileID: 381412955}
   - component: {fileID: 381412956}
+  - component: {fileID: 381412957}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -764,6 +765,22 @@ MonoBehaviour:
   knockBackTime: 1
   platform: 0
   candyCount: 0
+--- !u!114 &381412957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381412950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb0f038c5233a84e8de35cc5623ad09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCollected: 0
+  value: 1
+  pc: {fileID: 381412956}
+  fadeTime: 5
 --- !u!1 &534257493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb3abf47b5fe404287c5206c36cc4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpPrefab: {fileID: 9011516618964359376, guid: 0db1d75a0f793894ea2eb1032a812916, type: 3}
+  powerUpPrefab: {fileID: 9011516618964359376, guid: df12e4db35d2c904383ee87ac77eb683, type: 3}
   numberOfPowerUps: 2
   terrain: {fileID: 725838660}
 --- !u!1 &1312396238

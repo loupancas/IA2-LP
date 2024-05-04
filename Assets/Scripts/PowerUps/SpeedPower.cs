@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedPower : Pickup
 {
-    public int Modifier;
+    public int Modifier=2;
     public override void Activate()
     {
         Debug.Log("speed buff");

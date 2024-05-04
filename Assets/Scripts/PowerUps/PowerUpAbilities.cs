@@ -6,7 +6,7 @@ public class PowerUpAbilities : MonoBehaviour
 {
     public bool isCollected = false;
     public int value = 1;
-    public GameObject objectPowerUp;
+    //public GameObject objectPowerUp;
 
     [SerializeField] private PlayerController pc;
     [SerializeField] private int fadeTime;
