@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 4687567085299273153, guid: 5c6c7b6756d73704498aa6ed952d2fac, type: 3}
+  pickUpType: Candy
   value: 1

@@ -5,13 +5,14 @@ using UnityEngine;
 public abstract class Pickup : MonoBehaviour
 {
     public GameObject particles;
+    public string pickUpType;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<PlayerController>())
         {
             Activate();
             Instantiate(particles, transform.position, transform.rotation);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
     public abstract void Activate();
