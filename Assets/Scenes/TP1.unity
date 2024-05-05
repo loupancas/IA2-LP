@@ -1139,11 +1139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb3abf47b5fe404287c5206c36cc4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpPrefab: {fileID: 9011516618964359376, guid: df12e4db35d2c904383ee87ac77eb683, type: 3}
-  numberOfPowerUps: 2
-  minDistanceBetweenPowerUps: 4
+  pickupPrefabs:
+  - {fileID: 9011516618964359376, guid: fa09ee3a142a3704b80d4cd3f982b360, type: 3}
+  - {fileID: 9011516618964359376, guid: df12e4db35d2c904383ee87ac77eb683, type: 3}
+  minDistanceBetweenPowerUps: 10
   terrain: {fileID: 725838660}
   playerSpawn: {fileID: 1685493846}
+  quantity: 5
 --- !u!1 &1312396238
 GameObject:
   m_ObjectHideFlags: 0

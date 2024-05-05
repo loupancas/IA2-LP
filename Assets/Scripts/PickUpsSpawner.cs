@@ -5,13 +5,13 @@ using System;
 
 public class PickUpsSpawner : MonoBehaviour
 {
-    public GameObject powerUpPrefab;
-    public int numberOfPowerUps;
+    public GameObject[] pickupPrefabs;
     public int minDistanceBetweenPowerUps;
     private Vector3 spawnAreaCenter;
     private Vector3 spawnAreaSize;
     public GameObject terrain;
     public PlayerSpawner playerSpawn;
+    public float quantity;
 
     List<int> number = new List<int>();
     List<Vector3> existingspawnPoints = new List<Vector3>();
@@ -19,7 +19,7 @@ public class PickUpsSpawner : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < numberOfPowerUps; i++)
+        for (int i = 0; i < quantity; i++)
         {
             number.Add(i);
         }
@@ -34,7 +34,8 @@ public class PickUpsSpawner : MonoBehaviour
 
         spawnPoints.ForEach(spawnPoint =>
         {
-            Instantiate(powerUpPrefab, spawnPoint, Quaternion.identity);
+            GameObject pickupPrefab = pickupPrefabs[UnityEngine.Random.Range(0, pickupPrefabs.Length)];
+            Instantiate(pickupPrefab, spawnPoint, Quaternion.identity);
         });
     }
 
