@@ -9,9 +9,14 @@ public class PlayerSpawner : MonoBehaviour
 
     [SerializeField] public Vector3 startPosition;
 
+    private void Awake()
+    {
+        _player.transform.position = startPosition;
+    }
+
     private void Start()
     {
-       _player.transform.position = startPosition;
+      // _player.transform.position = startPosition;
     }
 
    
