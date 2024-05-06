@@ -32,6 +32,7 @@ public class PickUpsSpawner : MonoBehaviour
 
     void SpawnPowerUps()
     {
+        //IA2-LINQ 
         List<Vector3> spawnPoints = number
         .Select(coordenadas => GetRandomSpawnPoint(minDistanceBetweenPowerUps, playerSpawn.startPosition))
         .ToList();
@@ -49,7 +50,7 @@ public class PickUpsSpawner : MonoBehaviour
     {
         //spawnAreaCenter = new Vector3(terrain.transform.position.x, terrain.transform.position.y + 1, terrain.transform.position.z);
         //spawnAreaSize = new Vector3(terrain.transform.localScale.x, 1, terrain.transform.localScale.z);
-
+        //IA2-LINQ 
         Vector3 randomSpawnPoint;
         List<Vector3> existingSpawnPoints = existingspawnPoints;
         do

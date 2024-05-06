@@ -52,6 +52,7 @@ public class PowerUpAnnounce : MonoBehaviour
 
     void ListSpecificTypes()
     {
+        //IA2-LINQ 
         var powerUpTypes = powerUps.Select(p => p.GetComponent<Pickup>()).OfType<Pickup>().ToList();
         candyList = powerUpTypes.Where(p => p.pickUpType == "Candy").Select(p => p.gameObject).ToList();
         powerList = powerUpTypes.Where(p => p.pickUpType == "Power").Select(p => p.gameObject).ToList();
