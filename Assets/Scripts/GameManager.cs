@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float candies;
+    public int candies;
     public TextMeshProUGUI candyText;
-    private static GameManager instance;
+    public static GameManager instance;
+    public List<float> levelCompletionTimes = new List<float>();
+    public List<int> levelCompletionCandies = new List<int>();
 
     void Awake()
     {
@@ -22,20 +24,29 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void saveCompletionTime(float time)
+    {
+        levelCompletionTimes.Add(time);
+    }
     public void AddCandy(int ammount)
     {
         candies += ammount;
         candyText.text = ": " + candies;
     }
 
+    public void saveCompletionCandies()
+    {
+        levelCompletionCandies.Add(candies);
+    }
+
     public void MenuBackButton() 
     {
         Destroy(PlayerController.Get().gameObject);
-        SceneManager.LoadScene("ChoosePlayer");
     }
 
-    public static GameManager Get()
-    {
-        return instance;
-    }
+    //public static GameManager Get()
+    //{
+    //    return instance;
+    //}
 }

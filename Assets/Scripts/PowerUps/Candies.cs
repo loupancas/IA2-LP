@@ -5,9 +5,12 @@ using UnityEngine;
 public class Candies : Pickup
 {
     public int value;
+    
     public override void Activate()
     {
-        GameManager.Get().AddCandy(value);
+        Debug.Log("Candy");
+        GameManager.instance.AddCandy(value);
+
 
     }
 

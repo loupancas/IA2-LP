@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    public string playerName;
+    public float completionTime;
+    public int candiesCollected;
 
-    void Update()
+    public PlayerData(string name, float time, int collected)
     {
-        
+        playerName = name;
+        completionTime = time;
+        candiesCollected = collected;
     }
 }

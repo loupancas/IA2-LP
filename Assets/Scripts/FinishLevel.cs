@@ -8,14 +8,16 @@ public class FinishLevel : MonoBehaviour
 {
     TheBestScore theBestScore;
     TheBestTime BestTime;
+    [SerializeField] private Timer timer;
+    public ScoreManager scoreManager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            //string text = Timer.timer_TMP.text;
-            //BestTime = new TheBestTime(text);
-            // Finish the game by loading the next scene or displaying a game completion screen
-            // For demonstration, let's just reload the current scene
+            float completionTime = timer.getElapsedTime();
+            GameManager.instance.saveCompletionCandies();
+            GameManager.instance.saveCompletionTime(completionTime);
+            ScoreManager.instance.AddPlayerScore(PlayerManager.instance.GetPlayerName(),completionTime,GameManager.instance.candies);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

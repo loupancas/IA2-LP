@@ -45,7 +45,7 @@ public class PowerUpAnnounce : MonoBehaviour
         var collected = powerUps.Where(p => p.activeSelf && Vector3.Distance(p.transform.position, player.transform.position) <= interactionRange).ToList();
         foreach (var powerup in collected)
         {
-            powerup.SetActive(false);
+            //powerup.SetActive(false);
             collectedPowerUp.Add(powerup);
         }
     }

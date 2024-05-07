@@ -41,11 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //pivot = Camera.main.transform.GetChild(0).gameObject.transform;
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -194,14 +192,7 @@ public class PlayerController : MonoBehaviour
             //EnemyScoreSystem.Get().UpdateEnemyScore(enemyCount);
             //CoinManager.instance.CoinCollected(coinCount);
               
-    }
-
- 
+    }  
 
    
-
-    public void SaveCheckPoint()
-    {
-        //careTaker.SaveCheckPoint();
-    }
 }
