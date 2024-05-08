@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,9 +10,19 @@ public class ScoreManager : MonoBehaviour
     public List<PlayerData> fastPlayerList = new List<PlayerData>();
     public List<PlayerData> candyAumentedList = new List<PlayerData>();
     public static ScoreManager instance;
-    public ScorePanel scorePanel;
+    public GameObject panel;
+    public GameObject panelDetailedScores;
+    public GameObject panelNamesTimes;
+    public GameObject panelAllScores;
+    public GameObject panelSummary;
 
-    MenuScene MenuScene;
+    TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreTextDetailed;
+    public TextMeshProUGUI scoreTextNamesTimes;
+    public TextMeshProUGUI scoreTextAllScores;
+    public TextMeshProUGUI scoreTextSummary;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -40,29 +52,29 @@ public class ScoreManager : MonoBehaviour
     {
         return playerScores.OrderBy(p => p.candiesCollected);
     }
-
+    //IA2-LINQ
     public void ShowFastestPlayers()
     {
 
         fastPlayerList = playerScores.FilterByCompletionTimeThreshold(10).ToList();
     }
-
+    //IA2-LINQ
     public void IncrementCandies()
     {
         candyAumentedList = playerScores.IncrementCandiesCollected(5).ToList();
     }
-
+    //IA2-LINQ
     public void DisplayNamesTimes()
     {
-       //var namesWithTimes = playerScores.Select(p => p.playerName + " " + p.completionTime).ToList();
        var namesWithTimes = playerScores.Select(p => p.playerName).Zip( playerScores.Select(p=>p.completionTime),(name,time)=>$" { name }:{ time } ");
         foreach (var nameTime in namesWithTimes)
         {
             Debug.Log(nameTime);
         }
 
+        OpenPanel(namesWithTimes.ToArray(), panelNamesTimes, scoreTextNamesTimes);
     }
-
+    //IA2-LINQ
     public void DisplayAllScores()
     {
         var allScores = GetTopTimes().Concat(GetTopCandies()).ToList();
@@ -70,8 +82,9 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log(score.playerName + " " + score.completionTime + " " + score.candiesCollected);
         }
+        OpenPanel(allScores.Select(p => $"{p.playerName} - Time: {p.completionTime}, Candies: {p.candiesCollected}").ToArray(), panelAllScores, scoreTextAllScores);
     }
-
+    //IA2-LINQ
     public void DisplayDetailedScores()
     {
         var detailedScores = playerScores.SelectMany( p => new List <string> { $"{p.playerName} - Time: {p.completionTime}", $"{p.playerName} - Candies: {p.candiesCollected}" });
@@ -79,7 +92,9 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log(score);
         }
+        OpenPanel(detailedScores.ToArray(), panelDetailedScores , scoreTextDetailed);
     }
+    //IA2-LINQ
     //crea anonimo que incluye el nombre del jugador y una tupla con el tiempo y la cantidad de dulces.
     public IEnumerable<object> GetPlayerSummary()
     {
@@ -95,12 +110,20 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(summary);
         }
 
+        //OpenPanel(playerSummary.First() , panelSummary, scoreTextSummary);
     }
 
-    public void DisplayAllScoresInPanel()
+  
+    public void OpenPanel(string[] text, GameObject panel, TextMeshProUGUI textComponent)
     {
-        var allScores = GetTopTimes().Concat(GetTopCandies()).Select(score => $"{score.playerName} - Time: {score.completionTime}, Candies: {score.candiesCollected}").ToArray();
-        scorePanel.ShowScores(allScores);
+        if (panel != null && textComponent != null)
+        {
+            bool isActive = panel.activeSelf; // Verifica si el panel está activo
+            panel.SetActive(!isActive); // Activa o desactiva el panel
+            scoreText.text = string.Join(", ", text);
+
+        }
+
     }
 
 }

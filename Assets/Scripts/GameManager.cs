@@ -50,8 +50,5 @@ public class GameManager : MonoBehaviour
         Destroy(PlayerController.Get().gameObject);
     }
 
-    //public static GameManager Get()
-    //{
-    //    return instance;
-    //}
+  
 }
