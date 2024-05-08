@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Timer timer;
 
 
+
     private void Awake()
     {
         if (instance == null)

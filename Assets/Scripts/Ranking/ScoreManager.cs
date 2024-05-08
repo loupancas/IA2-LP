@@ -8,7 +8,9 @@ public class ScoreManager : MonoBehaviour
     public List<PlayerData> fastPlayerList = new List<PlayerData>();
     public List<PlayerData> candyAumentedList = new List<PlayerData>();
     public static ScoreManager instance;
+    public ScorePanel scorePanel;
 
+    MenuScene MenuScene;
     private void Awake()
     {
         if (instance == null)
@@ -58,6 +60,7 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log(nameTime);
         }
+
     }
 
     public void DisplayAllScores()
@@ -93,4 +96,11 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
+
+    public void DisplayAllScoresInPanel()
+    {
+        var allScores = GetTopTimes().Concat(GetTopCandies()).Select(score => $"{score.playerName} - Time: {score.completionTime}, Candies: {score.candiesCollected}").ToArray();
+        scorePanel.ShowScores(allScores);
+    }
+
 }
