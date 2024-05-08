@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
         candyText.text = ": " + candies;
     }
 
+    public void ResetCandies()
+    {
+        candies = 0;
+        candyText.text = ": " + candies;
+    }
     public void saveCompletionCandies()
     {
         levelCompletionCandies.Add(candies);

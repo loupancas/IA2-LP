@@ -29,4 +29,11 @@ public class Timer : MonoBehaviour
     {
         return time;
     }
+
+    public void resetTimer()
+    {
+        time = 0;
+    }
+
+
 }

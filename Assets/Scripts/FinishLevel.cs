@@ -15,10 +15,13 @@ public class FinishLevel : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
             float completionTime = timer.getElapsedTime();
+            timer.resetTimer();
             GameManager.instance.saveCompletionCandies();
             GameManager.instance.saveCompletionTime(completionTime);
             ScoreManager.instance.AddPlayerScore(PlayerManager.instance.GetPlayerName(),completionTime,GameManager.instance.candies);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.ResetCandies();
+
         }
     }
 }

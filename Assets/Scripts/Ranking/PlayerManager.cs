@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     public TMP_InputField nameInputField;
     private string playerName;
     public static PlayerManager instance;
+    [SerializeField] private Timer timer;
+
 
     private void Awake()
     {
@@ -22,9 +24,9 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SavePlayerData ()
+    public void SavePlayerName ()
     {
-        string playerName = nameInputField.text;
+        playerName = nameInputField.text;
         if(string.IsNullOrEmpty(playerName))
         {
             playerName = "Unknow";
@@ -35,5 +37,19 @@ public class PlayerManager : MonoBehaviour
     {
         return playerName;
     }
+
+    public void OpenPanel()
+    {
+        nameInputField.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        nameInputField.transform.parent.gameObject.SetActive(false);
+        nameInputField.text = "";
+        timer.resetTimer();
+    }
+
+   
 
 }

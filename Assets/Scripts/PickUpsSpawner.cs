@@ -28,6 +28,7 @@ public class PickUpsSpawner : MonoBehaviour
             number.Add(i);
         }
         SpawnPowerUps();
+        PlayerManager.instance.OpenPanel();
     }
 
     void SpawnPowerUps()
